@@ -8,43 +8,50 @@ export default function AppliedJob() {
 
   useEffect(() => {
     console.log(appliedJobs);
-    console.log(appliedJobs.length);
   }, [appliedJobs]);
 
   return (
-    <div className="flex flex-1 flex-col w-full h-full items-center mt-3 justify-center">
-      <h1 className="text-[28px] mb-4">Applied Jobs</h1>
+    <div className="flex flex-col items-center w-full px-4 mt-6">
+      <h1 className="text-2xl font-semibold mb-6">Applied Jobs</h1>
 
       {appliedJobs.length > 0 ? (
-        <ul className="w-full max-w-3xl">
-          <li className="grid grid-cols-4 font-semibold border-b pb-2 mb-2">
+        <div className="w-full max-w-5xl bg-white rounded-xl shadow-md overflow-hidden">
+          
+       
+          <div className="grid grid-cols-4 bg-gray-100 px-6 py-3 text-sm font-semibold text-gray-700">
             <span>Name</span>
             <span>Phone</span>
             <span>Location</span>
             <span>Position</span>
-          </li>
+          </div>
 
-       {appliedJobs.map((item, index) => {
-  const personal = item.personal ? JSON.parse(item.personal) : {};
-  const location = item.location ? JSON.parse(item.location) : {};
-  const position = item.position ? JSON.parse(item.position) : {};
+   
+          <div className="divide-y">
+            {appliedJobs.map((item, index) => {
+              const personal = item.personal ? JSON.parse(item.personal) : {};
+              const location = item.location ? JSON.parse(item.location) : {};
+              const position = item.position ? JSON.parse(item.position) : {};
 
-  return (
-    <li
-      key={index}
-      className="grid grid-cols-4 py-2 border-b text-sm"
-    >
-      <span>{personal.name}</span>
-      <span>{personal.phone}</span>
-      <span>{location.value}</span>
-      <span>{position.selected?.join(", ")}</span>
-    </li>
-  );
-})}
-
-        </ul>
+              return (
+                <div
+                  key={index}
+                  className="grid grid-cols-4 px-6 py-4 text-sm text-gray-800 hover:bg-gray-50 transition"
+                >
+                  <span className="font-medium">
+                    {personal.name || "-"}
+                  </span>
+                  <span>{personal.phone || "-"}</span>
+                  <span>{location.value || "-"}</span>
+                  <span className="text-blue-600">
+                    {position.selected?.join(", ") || "-"}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       ) : (
-        <p className="text-gray-500">No applied jobs found.</p>
+        <p className="text-gray-500 mt-10">No applied jobs found.</p>
       )}
     </div>
   );
