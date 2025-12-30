@@ -43,7 +43,7 @@ export default function Location() {
 
   return (
     <ProtectedStep step="location">
-      <div className="flex flex-1 justify-center px-4 py-10">
+      <div className="flex justify-center px-4 py-10">
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="w-full max-w-2xl bg-white rounded-xl shadow-sm border p-6 sm:p-8"

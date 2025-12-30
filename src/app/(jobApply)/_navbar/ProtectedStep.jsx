@@ -18,7 +18,7 @@ export default function ProtectedStep({ step, children }) {
   const previousStep = STEP_ORDER[stepIndex - 1];
 
   if (!completedSteps.includes(previousStep)) {
-    router.replace("/location")
+    router.replace(`/${previousStep}`);
     return null;
   }
 

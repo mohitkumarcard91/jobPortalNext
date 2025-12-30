@@ -73,7 +73,7 @@ export default function Navbar({ children }) {
   const { completedSteps } = useStep();
 
   return (
-    <div className="flex flex-col items-center flex-1 ">
+    <div className="flex flex-col items-center">
       <nav className="flex justify-between sm:justify-center gap-2 sm:gap-8 px-4 py-3 border-b bg-white">
         {STEPS.map((step) => (
           <StepLink
@@ -83,7 +83,7 @@ export default function Navbar({ children }) {
           />
         ))}
       </nav>
-<div className="-mt-10">
+<div className="flex flex-1 w-full max-w-4xl px-4 py-6">
       {children}
       </div>
     </div>
